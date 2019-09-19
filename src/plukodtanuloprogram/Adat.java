@@ -15,20 +15,41 @@ public class Adat {
     private String kod;
     private String kepcim;
     private Kategoria besorolas;
-   
+    String eleresiUt;
 
     public Adat(String nev, String kod) {
         this.nev = nev;
         this.kod = kod;
-        besorolas=Kategoria.Egyeb;
-        kepcim="nincsMegadva.jpg";
+        besorolas = Kategoria.Egyeb;
+        kepcim = "nincsMegadva.jpg";
+        eleresiUt = "egyeb.dat";
     }
-    public void adatModositas(String masnev,String maskod,String maskepcim, Kategoria masKateg){
-        nev=masnev;
-        kod=maskod;
-        kepcim=maskepcim;
-        besorolas=masKateg;
+    public void eleresiUtIni(){
+        switch (besorolas) {
+            case Egyeb:
+                eleresiUt = "egyeb.dat";
+                break;
+            case Pekaru:
+                eleresiUt = "pekaru.dat";
+                break;
+            case ZoldsegGyumolcs:
+                eleresiUt = "zgy.dat";
+                break;
+            default:
+                eleresiUt = null;
+                break;
+    }
+    }
+    public void adatModositas(String masnev, String maskod, String maskepcim, Kategoria masKateg) {
+        nev = masnev;
+        kod = maskod;
+        kepcim = maskepcim;
+        besorolas = masKateg;
+        eleresiUtIni();
         
+
+        
+
     }
 
     public Adat(String nev, String kod, String kepcim, Kategoria besorolas) {
@@ -36,6 +57,9 @@ public class Adat {
         this.kod = kod;
         this.kepcim = kepcim;
         this.besorolas = besorolas;
+        eleresiUtIni();
+        
+        
     }
 
     public Kategoria getBesorolas() {
@@ -69,8 +93,5 @@ public class Adat {
     public void setKepcim(String kepcim) {
         this.kepcim = kepcim;
     }
-    
-    
-    
 
 }
